@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as faceapi from "face-api.js";
 import { Link, useNavigate } from "react-router-dom";
-import image from "../background.jpg";
+import image from '../background.jpg'
 
 const Home = ({ auth, userName }) => {
   const videoRef = useRef();
@@ -106,33 +106,23 @@ const Home = ({ auth, userName }) => {
 
   return (
     <div
-      className="bg-cover min-h-screen flex justify-center items-center"
-      style={{
-        backgroundImage: `url(${image})`,
-        flexDirection: "column", // Change flex direction to column for mobile
-        padding: "20px", // Add padding for better spacing on mobile
-      }}
+    className="bg-cover min-h-screen flex justify-center items-center"
+    style={{
+      backgroundImage: `url(${image})`,
+    }}
     >
       <div className="text-white text-center">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 md:mb-4 ">
-          Welcome to FaceAuth
-        </h1>{" "}
-        {/* Adjust font size for mobile */}
-        <p className="text-lg md:text-xl ">Hello {userName}</p>{" "}
-        {/* Adjust font size for mobile */}
-        <div className="flex flex-col items-center mt-4">
-          {" "}
-          {/* Add margin top for better spacing */}
+        <h1 className="text-4xl font-bold mb-4 ">Welcome to FaceAuth</h1>
+        <p className="text-xl ">Hello {userName}</p>
+        <div className="flex flex-col items-center ">
           <video
             ref={videoRef}
             autoPlay
             muted
-            className="w-full mb-4 border border-gray-300" // Make the video width full for mobile
-            style={{ maxWidth: "300px" }} // Limit video width on larger screens
+            className=" h-full  mb-4 border border-gray-300 my-7"
           ></video>
-          <canvas ref={canvasRef} className="appcanvas w-full" />{" "}
-          {/* Make the canvas width full for mobile */}
-          <div className="mt-4">
+          <canvas ref={canvasRef} className="appcanvas " />
+          <div>
             <Link
               to="/match"
               className="inline-block bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"

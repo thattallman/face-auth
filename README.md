@@ -13,10 +13,16 @@ a. Setting up the back end
    - set the environmental variables in the util.js file 
    - npm run start
 
+Architecture :
+ - High Level
+     ![image](https://github.com/thattallman/face-auth/assets/82497615/0f40d276-526d-42d1-a77e-7dd43aec7ae0)
+-Low Level
+     ![image](https://github.com/thattallman/face-auth/assets/82497615/1978a858-2dd4-4bc6-b929-7a9de39740c4)
+
+
  Project  Screen Shots :
   a. User Registration
-
-       ![image](https://github.com/thattallman/face-auth/assets/82497615/04cc7f11-2dcb-4e15-bfd4-1912e60eddd9)
+ ![image](https://github.com/thattallman/face-auth/assets/82497615/04cc7f11-2dcb-4e15-bfd4-1912e60eddd9)
 
 b. User Login- https://face-auth-detection.vercel.app/login
  (without login conditions  - stare at the camera for few seconds ) 

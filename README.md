@@ -1,12 +1,12 @@
 Deploy link : https://face-auth-detection.vercel.app
 
 a. Setting up the back end 
-      - npm install  
-     - export MONGOURL=“your/mongodb/url” ( for Linux-based systems)
+  - npm install  
+  - export MONGOURL=“your/mongodb/url” ( for Linux-based systems)
                                                            Or 
-      - set MONGOURL=“your_mongodb_connection_url” (For Windows-based systems)
-      - npm run dev (for development )
-       - npm run start (for production )
+  - set MONGOURL=“your_mongodb_connection_url” (For Windows-based systems)
+   - npm run dev (for development )
+  - npm run start (for production )
     
   b. Setting up the front-end 
     -npm install 

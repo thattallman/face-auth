@@ -10,9 +10,7 @@ a. Setting up the back end
     
   b. Setting up the front-end 
     -npm install 
-   - set the environmental variables in the util.js file (in my case it is - 
-               REACT_APP_SERVER_URL='https://kdsbf0gjsa.execute-api.us-east-1.amazonaws.com/dev'
-      )
+   - set the environmental variables in the util.js file 
    - npm run start
 
  Project  Screen Shots :
@@ -22,12 +20,10 @@ a. Setting up the back end
 
 b. User Login- https://face-auth-detection.vercel.app/login
  (without login conditions  - stare at the camera for few seconds ) 
-
-               ![image](https://github.com/thattallman/face-auth/assets/82497615/e1da4852-6528-4a7c-821a-1772a1d4b85b)
+ ![image](https://github.com/thattallman/face-auth/assets/82497615/e1da4852-6528-4a7c-821a-1772a1d4b85b)
                
  Face recognition and authentication
- 
-               ![image](https://github.com/thattallman/face-auth/assets/82497615/b4e19239-a5dd-4334-a00b-d1b09a7cfb8f)
+ ![image](https://github.com/thattallman/face-auth/assets/82497615/b4e19239-a5dd-4334-a00b-d1b09a7cfb8f)
 
 c. Home Screen with facial detection and descriptors 
 

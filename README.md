@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+Deploy link : https://face-auth-detection.vercel.app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+a. Setting up the back end 
+      - npm install  
+     - export MONGOURL=“your/mongodb/url” ( for Linux-based systems)
+                                                           Or 
+      - set MONGOURL=“your_mongodb_connection_url” (For Windows-based systems)
+      - npm run dev (for development )
+       - npm run start (for production )
+    
+  b. Setting up the front-end 
+    -npm install 
+   - set the environmental variables in the util.js file (in my case it is - 
+               REACT_APP_SERVER_URL='https://kdsbf0gjsa.execute-api.us-east-1.amazonaws.com/dev'
+      )
+   - npm run start
 
-## Available Scripts
+ Project  Screen Shots :
+  a. User Registration
 
-In the project directory, you can run:
+       ![image](https://github.com/thattallman/face-auth/assets/82497615/04cc7f11-2dcb-4e15-bfd4-1912e60eddd9)
 
-### `npm start`
+b. User Login- https://face-auth-detection.vercel.app/login
+ (without login conditions  - stare at the camera for few seconds ) 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+               ![image](https://github.com/thattallman/face-auth/assets/82497615/e1da4852-6528-4a7c-821a-1772a1d4b85b)
+               
+ Face recognition and authentication
+ 
+               ![image](https://github.com/thattallman/face-auth/assets/82497615/b4e19239-a5dd-4334-a00b-d1b09a7cfb8f)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+c. Home Screen with facial detection and descriptors 
 
-### `npm test`
+![image](https://github.com/thattallman/face-auth/assets/82497615/4f0ac002-d587-4995-9a3c-448323a1b32c)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+d. Face matcher - Compared two different faces and recognise similarity and differences 
 
-### `npm run build`
+![image](https://github.com/thattallman/face-auth/assets/82497615/dc12f3ed-216c-4e27-be26-d5b4c89b8c1f)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://github.com/thattallman/face-auth/assets/82497615/76d5565f-822f-4dfe-8cc7-d3a219c59560)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+               
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 
+ 

@@ -6,11 +6,6 @@ const Face = ({ faceDiscriporRef, setFaceDiscriporRef }) => {
   const canvasRef = useRef();
   const mediaStreamRef = useRef(null);
 
-  // loading the madels after the page is loaded
-  // useEffect(() => {
-  //   loadModels();
-  // }, []);
-
   // function to start the video
   const startVideo = () => {
     navigator.mediaDevices
@@ -49,7 +44,7 @@ const Face = ({ faceDiscriporRef, setFaceDiscriporRef }) => {
     }
   };
 
-  // function to caputure the image and stop the camera and the model interval
+  // function to caputure the image and stop the camera and the  interval
   const captureImage = async () => {
     clearInterval(faceDetectInterval);
     const canvas = document.createElement("canvas");
@@ -69,9 +64,8 @@ const Face = ({ faceDiscriporRef, setFaceDiscriporRef }) => {
     faceapi.draw.drawFaceExpressions(canvas, detections);
     const faceDescriptors = detections.map((face) => face.descriptor);
 
-
     setFaceDiscriporRef(faceDescriptors);
-   
+
     const capturedImage = canvas.toDataURL("image/png");
     setImageSrc(capturedImage);
     stopCamera();
@@ -83,15 +77,6 @@ const Face = ({ faceDiscriporRef, setFaceDiscriporRef }) => {
     setFaceDiscriporRef(null);
   };
 
-  // for loading the models requried
-  // const loadModels = () => {
-  //   Promise.all([
-  //     faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
-  //     faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
-  //     faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
-  //     faceapi.nets.faceExpressionNet.loadFromUri("/models"),
-  //   ]);
-  // };
 
   let faceDetectInterval;
   const faceMyDetect = () => {

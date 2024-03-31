@@ -4,13 +4,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import {  LineWave} from 'react-loader-spinner'
+import {REACT_APP_SERVER_URL} from '../utils'
 const Face2 = ({  setUserName,setAuth  }) => {
   const [faceDetected, setFaceDetected] = useState(false);
   const videoRef = useRef();
   const mediaStreamRef = useRef(null);
   const navigate = useNavigate();
 
-  // loading the madels after the page is loaded
+
   useEffect(() => {
     startVideo();
   }, []);
@@ -39,8 +40,10 @@ const Face2 = ({  setUserName,setAuth  }) => {
   const faceMyDetect = () => {
     faceDetectInterval = setInterval(async () => {
     
-      // Limit detection to a single face for faster processing
+  
 
+
+      // identifying the live feeed of the camera 
       let detection = await faceapi
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
@@ -48,17 +51,20 @@ const Face2 = ({  setUserName,setAuth  }) => {
 
       if (detection && Array.isArray(detection) && detection.length > 0 && detection[0]?.descriptor) {
        
+        // getting the information of all the labeled faced from the database 
         axios
-          .get("https://kdsbf0gjsa.execute-api.us-east-1.amazonaws.com/dev/faceAuth")
+          .get(REACT_APP_SERVER_URL+ '/faceAuth')
           .then((response) => {
             if (response.data.length > 0) {
 
               const arrayData = response.data.map((json) =>
                 faceapi.LabeledFaceDescriptors.fromJSON(json)
               );
+              // initiating the face matcher 
               const faceMatcher = new faceapi.FaceMatcher(arrayData);
               const result = faceMatcher.findBestMatch(detection[0].descriptor);
 
+              // if the face is precent in the database 
               if (result._label !== "unknown") {
                 clearInterval(faceDetectInterval);
                 setUserName(result._label);
@@ -79,7 +85,6 @@ const Face2 = ({  setUserName,setAuth  }) => {
     }, 500);
   };
 
-  // return component
   return (
     <div className="mt-16">
       <div className="flex flex-col items-center ">

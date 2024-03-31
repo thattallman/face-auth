@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as faceapi from "face-api.js";
 import { Link, useNavigate } from "react-router-dom";
-import image from '../background.jpg'
+import image from "../background.jpg";
 
 const Home = ({ auth, userName }) => {
   const videoRef = useRef();
@@ -15,7 +15,6 @@ const Home = ({ auth, userName }) => {
   }, []);
 
   useEffect(() => {
-    startVideo();
     if (auth === false) navigate("/login");
 
     // Clean up function to clear interval and release resources
@@ -92,8 +91,8 @@ const Home = ({ auth, userName }) => {
           color: "blue",
         });
 
-        // Draw custom elements or annotations
-        // Example: Draw a rectangle around the face
+        // Drawing  custom elements or annotations
+  
         const box = detection.detection.box;
         context.beginPath();
         context.strokeStyle = "red";
@@ -106,10 +105,10 @@ const Home = ({ auth, userName }) => {
 
   return (
     <div
-    className="bg-cover min-h-screen flex justify-center items-center"
-    style={{
-      backgroundImage: `url(${image})`,
-    }}
+      className="bg-cover min-h-screen flex justify-center items-center"
+      style={{
+        backgroundImage: `url(${image})`,
+      }}
     >
       <div className="text-white text-center">
         <h1 className="text-4xl font-bold mb-4 ">Welcome to FaceAuth</h1>

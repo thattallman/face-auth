@@ -37,8 +37,11 @@ const FaceMatch = ({ auth }) => {
   };
   const match = async () => {
     setSpinner(true);
+
+    // getting the first page 
     const face1 = document.getElementById("imageLeft");
 
+    // loading it into the model
     let leftFace = await faceapi
       .detectAllFaces(face1, new faceapi.TinyFaceDetectorOptions())
       .withFaceLandmarks()
@@ -52,12 +55,13 @@ const FaceMatch = ({ auth }) => {
       setSpinner(false);
       return;
     }
+
     const faceDescriptors = leftFace.map((face) => face.descriptor);
-
+    //initiating the FaceMatcher from the description 
     const faceMatcher = new faceapi.FaceMatcher(faceDescriptors);
-
+   // getting the second image 
     const face2 = document.getElementById("imageRight");
-
+     // loading it into the model 
     let rightFace = await faceapi
       .detectAllFaces(face2, new faceapi.TinyFaceDetectorOptions())
       .withFaceLandmarks()
@@ -70,7 +74,7 @@ const FaceMatch = ({ auth }) => {
       rightFace[0]?.descriptor
     ) {
       const bestMatch = faceMatcher.findBestMatch(rightFace[0].descriptor);
-
+        // if the face matches conditions 
       if (bestMatch._label === "unknown") {
         setSpinner(false);
         toast.error("Face did not match ", {

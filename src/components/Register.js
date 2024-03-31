@@ -5,19 +5,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { REACT_APP_SERVER_URL } from "../utils";
 
-// const loadModels = () => {
-//   Promise.all([
-//     // faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
-//     // faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
-//     faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
-//     // faceapi.nets.faceExpressionNet.loadFromUri("/models"),
-//   ]);
-// };
+
 
 const Register = ({ faceDiscriporRef }) => {
   useEffect(() => {
-    // loadModels();
+   
   });
 
   const navigate = useNavigate();
@@ -38,23 +32,21 @@ const Register = ({ faceDiscriporRef }) => {
       toast.error("Face ID not set. Please try again.");
       return;
     }
+    // labeling the faceId with the name and storing it into the database 
     const labeledFaceDescriptors = new faceapi.LabeledFaceDescriptors(
       firstName,
       faceDiscriporRef
     );
     const serialized = labeledFaceDescriptors.toJSON();
-  
-
-   
 
     axios
-      .post("https://kdsbf0gjsa.execute-api.us-east-1.amazonaws.com/dev/register", {
+      .post(REACT_APP_SERVER_URL + "/register", {
         firstName,
         lastName,
         password,
         email,
         phoneNumber: number,
-        faceDescriptor:serialized,
+        faceDescriptor: serialized,
       })
       .then(function (response) {
         console.log(response);

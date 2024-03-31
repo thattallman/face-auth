@@ -3,6 +3,7 @@ import { TbFaceId } from "react-icons/tb";
 import axios from "axios";
 import {  toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import {REACT_APP_SERVER_URL} from '../utils'
 
 
 const Login = ({faceId}) => {
@@ -12,7 +13,7 @@ const Login = ({faceId}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-    .post("https://kdsbf0gjsa.execute-api.us-east-1.amazonaws.com/dev/login", {
+    .post(REACT_APP_SERVER_URL+`/login`, {
       email,
       password,
     })

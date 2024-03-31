@@ -43,7 +43,7 @@ const Register = ({ faceDiscriporRef }) => {
       faceDiscriporRef
     );
     const serialized = labeledFaceDescriptors.toJSON();
-    console.log(serialized);
+  
 
    
 

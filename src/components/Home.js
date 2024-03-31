@@ -1,17 +1,31 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as faceapi from "face-api.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import image from '../background.jpg'
+
 const Home = ({ auth, userName }) => {
   const videoRef = useRef();
   const mediaStreamRef = useRef(null);
   const navigate = useNavigate();
   const canvasRef = useRef();
 
-
+  useEffect(() => {
+    startVideo();
+    if (auth === false) navigate("/login");
+  }, []);
 
   useEffect(() => {
     startVideo();
     if (auth === false) navigate("/login");
+
+    // Clean up function to clear interval and release resources
+    return () => {
+      clearInterval(faceDetectInterval);
+
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+      }
+    };
   }, []);
 
   const startVideo = () => {
@@ -45,12 +59,15 @@ const Home = ({ auth, userName }) => {
   const faceMyDetect = () => {
     // calling an interval after every second
     faceDetectInterval = setInterval(async () => {
+      if (!videoRef.current) return;
+      if (!canvasRef.current) return;
       // loading the present feed in the model
       let detections = await faceapi
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
         .withFaceExpressions();
       // clearing the canvas
+      if (!canvasRef.current) return;
       const context = canvasRef.current.getContext("2d");
       context.clearRect(
         0,
@@ -89,11 +106,10 @@ const Home = ({ auth, userName }) => {
 
   return (
     <div
-      className="bg-cover min-h-screen flex justify-center items-center"
-      style={{
-        backgroundImage:
-          "url('https://img.freepik.com/free-vector/background-realistic-abstract-technology-particle_23-2148431735.jpg?w=1800&t=st=1711836485~exp=1711837085~hmac=c8e30b470652badc95a69b428890c07398c3b83901818dd2a5cf4736c0182f55')",
-      }}
+    className="bg-cover min-h-screen flex justify-center items-center"
+    style={{
+      backgroundImage: `url(${image})`,
+    }}
     >
       <div className="text-white text-center">
         <h1 className="text-4xl font-bold mb-4 ">Welcome to FaceAuth</h1>
@@ -106,6 +122,14 @@ const Home = ({ auth, userName }) => {
             className=" h-full  mb-4 border border-gray-300 my-7"
           ></video>
           <canvas ref={canvasRef} className="appcanvas " />
+          <div>
+            <Link
+              to="/match"
+              className="inline-block bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+            >
+              Try Face Matcher
+            </Link>
+          </div>
         </div>
       </div>
     </div>

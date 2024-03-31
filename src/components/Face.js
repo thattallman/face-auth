@@ -71,7 +71,7 @@ const Face = ({ faceDiscriporRef, setFaceDiscriporRef }) => {
 
 
     setFaceDiscriporRef(faceDescriptors);
-    console.log(faceDiscriporRef);
+   
     const capturedImage = canvas.toDataURL("image/png");
     setImageSrc(capturedImage);
     stopCamera();

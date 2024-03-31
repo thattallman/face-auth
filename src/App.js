@@ -8,6 +8,8 @@ import AuthLogin from "./components/AuthLogin";
 import * as faceapi from "face-api.js";
 import { useEffect,useState } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
+import FaceMatch from "./components/FaceMatch";
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [modelsLoaded, setModelsLoaded] = useState(false);
@@ -39,6 +41,7 @@ function App() {
             <Route path="/" element={<AuthReg  />} />
             <Route path="/login" element={<AuthLogin setAuth={setAuth} setUserName={setUserName}  />} />
             <Route path="/home" element={<Home auth={auth} userName={userName}/>} />
+            <Route path="/match" element={<FaceMatch auth={auth}/>} />
           </Routes>
         ) : (
           <LoadingSpinner />

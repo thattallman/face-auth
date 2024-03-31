@@ -38,7 +38,7 @@ const Face2 = ({  setUserName,setAuth  }) => {
 
   const faceMyDetect = () => {
     faceDetectInterval = setInterval(async () => {
-      console.log('running')
+    
       // Limit detection to a single face for faster processing
 
       let detection = await faceapi
@@ -52,7 +52,7 @@ const Face2 = ({  setUserName,setAuth  }) => {
           .get("https://kdsbf0gjsa.execute-api.us-east-1.amazonaws.com/dev/faceAuth")
           .then((response) => {
             if (response.data.length > 0) {
-              console.log('entered')
+
               const arrayData = response.data.map((json) =>
                 faceapi.LabeledFaceDescriptors.fromJSON(json)
               );

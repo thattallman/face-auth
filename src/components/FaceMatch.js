@@ -73,7 +73,7 @@ const FaceMatch = ({ auth }) => {
 
       if (bestMatch._label === "unknown") {
         setSpinner(false);
-        toast.error("Face match failed", {
+        toast.error("Face did not match ", {
           position: "top-center",
         });
       } else {

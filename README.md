@@ -9,7 +9,7 @@ a. Setting up the back end
   - npm run start (for production )
     
   b. Setting up the front-end 
-    -npm install 
+  -npm install 
    - set the environmental variables in the util.js file 
    - npm run start
 
